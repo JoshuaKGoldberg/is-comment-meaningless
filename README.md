@@ -38,12 +38,14 @@ isCommentMeaningless("mmh, yes, indeed, a fine point, thank you 🧐");
 
 ### How It Works
 
-`isCommentMeaningless` is cautious: it only returns `true` for a set list of known "meaningless" comments.
+`isCommentMeaningless` only returns `true` for a set list of known "meaningless" comments.
 It first normalizes text by:
 
 1. Replacing all non-alphabet characters
 2. Removing any instances of the word _"please"_
 3. Lower-casing the text
+
+You can see the list of phrases in [src/index.ts](./src/index.ts) and example test cases in [src/index.test.ts](./src/index.test.ts).
 
 > Want a new phrase to be added?
 > Great!
