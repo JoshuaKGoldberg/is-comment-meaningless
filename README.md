@@ -20,15 +20,39 @@
 
 ## Usage
 
+Use the exported `isCommentMeaningless` function to test whether a string seems to be a definite _"+1"_-style comment.
+
 ```shell
 npm i is-comment-meaningless
 ```
 
 ```ts
-import { greet } from "is-comment-meaningless";
+import { isCommentMeaningless } from "is-comment-meaningless";
 
-greet("Hello, world! 💖");
+// true
+isCommentMeaningless("+1");
+
+// false
+isCommentMeaningless("mmh, yes, indeed, a fine point, thank you 🧐");
 ```
+
+### How It Works
+
+`isCommentMeaningless` is cautious: it only returns `true` for a set list of known "meaningless" comments.
+It first normalizes text by:
+
+1. Replacing all non-alphabet characters
+2. Removing any instances of the word _"please"_
+3. Lower-casing the text
+
+> Want a new phrase to be added?
+> Great!
+> [File a new phrase request issue](https://github.com/JoshuaKGoldberg/is-comment-meaningless/issues/new?template=00-.phrase.yml)
+
+## Why?
+
+This utility will be used in [JoshuaKGoldberg/hublint](https://github.com/JoshuaKGoldberg/hublint), a linter for GitHub repository activity.
+That bot will be able to automatically post a friendly reply to seemingly meaningless comments with resources to help the commenter understand why posting them is not helpful.
 
 ## Development
 

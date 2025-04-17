@@ -1,0 +1,27 @@
+body:
+  - attributes:
+      description: If any of these required steps are not taken, we may not be able to review your issue. Help us to help you!
+      label: Phrase Request Checklist
+      options:
+        - label: I have [searched for related issues](https://github.com/JoshuaKGoldberg/is-comment-meaningless/issues?q=is%3Aissue%20phrase) and found none that matched my issue.
+          required: true
+    type: checkboxes
+  - attributes:
+      description: What phrase would you like added to the list?
+      label: Expected
+    type: textarea
+    validations:
+      required: true
+  - attributes:
+      description: Any additional info you'd like to provide.
+      label: Additional Info
+    type: textarea
+
+description: Request a new phrase to be added to the list of meaningless phrases
+
+labels:
+  - "type: phrase"
+
+name: 🔖 Phrase Request
+
+title: "🔖 Phrase: Add <new phrase> to the list of meaningless phrases"
