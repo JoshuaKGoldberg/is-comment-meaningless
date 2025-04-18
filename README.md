@@ -49,7 +49,7 @@ You can see the list of phrases in [src/index.ts](./src/index.ts) and example te
 
 > Want a new phrase to be added?
 > Great!
-> [File a new phrase request issue](https://github.com/JoshuaKGoldberg/is-comment-meaningless/issues/new?template=00-.phrase.yml)
+> [File a new phrase request issue](https://github.com/JoshuaKGoldberg/is-comment-meaningless/issues/new?template=00-phrase.yml)
 
 ## Why?
 
