@@ -29,16 +29,24 @@ npm i is-comment-meaningless
 ```ts
 import { isCommentMeaningless } from "is-comment-meaningless";
 
-// true
+// "sentiment"
 isCommentMeaningless("+1");
 
 // false
 isCommentMeaningless("mmh, yes, indeed, a fine point, thank you 🧐");
 ```
 
+`isCommentMeaningless` returns either a string or false:
+
+- `false`: if the phrase is not known to be a meaningless phrase
+- `"blank"`: empty comments or with no real meaning, such as `"wut"`
+- `"help"`: requests for help, such as `"any idea?"` and `"help"`
+- `"sentiment"`: agreement or emotion without information, such as `"+1"` and `"subscribed"`
+- `"update"`: requests for an update on the issue, such as `"bump"` and `"any update?"`
+
 ### How It Works
 
-`isCommentMeaningless` only returns `true` for a set list of known "meaningless" comments.
+`isCommentMeaningless` only returns a string reason for a set list of known "meaningless" comments.
 It first normalizes text by:
 
 1. Replacing all non-alphabet characters
