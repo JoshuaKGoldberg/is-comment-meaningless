@@ -29,21 +29,29 @@ npm i is-comment-meaningless
 ```ts
 import { isCommentMeaningless } from "is-comment-meaningless";
 
-// true
+// "sentiment"
 isCommentMeaningless("+1");
 
 // false
 isCommentMeaningless("mmh, yes, indeed, a fine point, thank you 🧐");
 ```
 
+`isCommentMeaningless` returns either a string or false:
+
+- `false`: if the phrase is not known to be a meaningless phrase
+- `"blank"`: empty comments or with no real meaning, such as `"wut"`
+- `"help"`: requests for help, such as `"any idea?"` and `"help"`
+- `"sentiment"`: agreement or emotion without information, such as `"+1"` and `"subscribed"`
+- `"update"`: requests for an update on the issue, such as `"bump"` and `"any update?"`
+
 ### How It Works
 
-`isCommentMeaningless` only returns `true` for a set list of known "meaningless" comments.
+`isCommentMeaningless` only returns a string reason for a set list of known "meaningless" comments.
 It first normalizes text by:
 
 1. Replacing all non-alphabet characters
-2. Removing any instances of the word _"please"_
-3. Lower-casing the text
+2. Lower-casing the text
+3. Removing any instances of the word _"please"_ or its abbreviations
 
 You can see the list of phrases in [src/index.ts](./src/index.ts) and example test cases in [src/index.test.ts](./src/index.test.ts).
 
