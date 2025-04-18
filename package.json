@@ -1,6 +1,6 @@
 {
 	"name": "is-comment-meaningless",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "Determines whether the text of a comment doesn't add anything to the conversation. 😶",
 	"repository": {
 		"type": "git",
