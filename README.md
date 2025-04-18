@@ -59,7 +59,7 @@ That bot will be able to automatically post a friendly reply to seemingly meanin
 ## Development
 
 See [`.github/CONTRIBUTING.md`](./.github/CONTRIBUTING.md), then [`.github/DEVELOPMENT.md`](./.github/DEVELOPMENT.md).
-Thanks! 💖
+Thanks! 😶
 
 ## Contributors
 
