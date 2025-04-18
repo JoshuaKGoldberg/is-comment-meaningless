@@ -53,7 +53,7 @@ You can see the list of phrases in [src/index.ts](./src/index.ts) and example te
 
 ## Why?
 
-This utility will be used in [JoshuaKGoldberg/hublint](https://github.com/JoshuaKGoldberg/hublint), a linter for GitHub repository activity.
+This utility will be used in [JoshuaKGoldberg/OctoGuide](https://github.com/JoshuaKGoldberg/OctoGuide), a linter for GitHub repository activity.
 That bot will be able to automatically post a friendly reply to seemingly meaningless comments with resources to help the commenter understand why posting them is not helpful.
 
 ## Development
