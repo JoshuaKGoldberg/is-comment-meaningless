@@ -16,29 +16,97 @@ describe(isCommentMeaningless, () => {
 	});
 
 	describe("meaningless", () => {
-		it.each([
-			" ",
-			"-1",
-			"",
-			"\t",
-			"\t\n \n \r\n ",
-			"+1",
-			"any update please?",
-			"any update please",
-			"any update?",
-			"any update",
-			"help please",
-			"help",
-			"is this fixed?",
-			"is this fixed",
-			"minus one",
-			"please help",
-			"please, is this fixed?",
-			"plus one",
-			"PLUS ONE",
-			"PlUs OnE",
-		])("%j", (text) => {
-			expect(isCommentMeaningless(text)).toBe(true);
+		describe("blank", () => {
+			it.each([
+				" ",
+				"\t",
+				"\n",
+				"...",
+				"wat",
+				"what?",
+				"wut",
+				"WUT",
+				"\t\n \n \r\n ",
+				"",
+			])("%j", (text) => {
+				expect(isCommentMeaningless(text)).toBe("blank");
+			});
+		});
+
+		describe("help", () => {
+			it.each([
+				"did anybody get this to work?",
+				"did anybody get this to work",
+				"help me please",
+				"help me",
+				"help please",
+				"help",
+				"please help",
+				"pls help",
+				"plz help",
+				"PlZ HeLp",
+			])("%j", (text) => {
+				expect(isCommentMeaningless(text)).toBe("help");
+			});
+		});
+
+		describe("sentiment", () => {
+			it.each([
+				"- 1",
+				"- 2",
+				"-",
+				"-1!",
+				"-1",
+				"-2!",
+				"-2",
+				"-9000!",
+				"-9001!",
+				"+ !",
+				"+ 1!",
+				"+!",
+				"+",
+				"+1 !",
+				"+1!",
+				"+1",
+				"+2!",
+				"+2",
+				"+9000!",
+				"+9001!",
+				"ditto",
+				"im also seeing this",
+				"i am also seeing this",
+				"I'm also seeing this",
+				"me too",
+				"minus one",
+				"plus one!",
+				"plus one",
+				"PLUS ONE",
+				"same here",
+				"same",
+				"us too",
+			])("%j", (text) => {
+				expect(isCommentMeaningless(text)).toBe("sentiment");
+			});
+		});
+
+		describe("update", () => {
+			it.each([
+				"any update",
+				"any update?",
+				"any update?!",
+				"any update on this",
+				"bump",
+				"is this broken?",
+				"is this still broken?",
+				"is this fixed?",
+				"is this fixed",
+				"is this still not fixed",
+				"looking forward to it",
+				"looking forward to this",
+				"up",
+			])("%j", (text) => {
+				expect(isCommentMeaningless(text)).toBe("update");
+			});
 		});
 	});
 });

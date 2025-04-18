@@ -42,14 +42,14 @@ isCommentMeaningless("mmh, yes, indeed, a fine point, thank you 🧐");
 It first normalizes text by:
 
 1. Replacing all non-alphabet characters
-2. Removing any instances of the word _"please"_
-3. Lower-casing the text
+2. Lower-casing the text
+3. Removing any instances of the word _"please"_ or its abbreviations
 
 You can see the list of phrases in [src/index.ts](./src/index.ts) and example test cases in [src/index.test.ts](./src/index.test.ts).
 
 > Want a new phrase to be added?
 > Great!
-> [File a new phrase request issue](https://github.com/JoshuaKGoldberg/is-comment-meaningless/issues/new?template=00-.phrase.yml)
+> [File a new phrase request issue](https://github.com/JoshuaKGoldberg/is-comment-meaningless/issues/new?template=00-phrase.yml)
 
 ## Why?
 
