@@ -47,11 +47,11 @@ isCommentMeaningless("mmh, yes, indeed, a fine point, thank you 🧐");
 ### How It Works
 
 `isCommentMeaningless` only returns a string reason for a set list of known "meaningless" comments.
-It first normalizes text by:
+It checks text in three passes, returning the first reason that matches:
 
-1. Replacing all non-alphabet characters
-2. Lower-casing the text
-3. Removing any instances of the word _"please"_ or its abbreviations
+1. Trimming the text and checking it against the known phrases as-is, such as for emoji like _"👍"_
+2. Lower-casing the text and replacing all non-alphabet characters, so that _"+9001!"_ is treated the same as _"+1"_
+3. Using [`are-docs-informative`](https://github.com/JoshuaKGoldberg/are-docs-informative) to check whether the text contains only words from a known phrase, ignoring "useless" words such as _"a"_ and _"please"_
 
 You can see the list of phrases in [src/index.ts](./src/index.ts) and example test cases in [src/index.test.ts](./src/index.test.ts).
 
