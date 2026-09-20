@@ -1,4 +1,23 @@
+import { areDocsInformative } from "are-docs-informative";
+
 export type MeaninglessReason = "blank" | "help" | "sentiment" | "update";
+
+// Words that don't add meaning to a comment on their own
+const uselessWords = [
+	"a",
+	"an",
+	"and",
+	"i",
+	"in",
+	"of",
+	"on",
+	"please",
+	"pls",
+	"plz",
+	"re",
+	"s",
+	"the",
+];
 
 const knownMeaninglessPhrases = {
 	blank: new Set(["", "wat", "what", "wut"]),
@@ -93,15 +112,29 @@ export function isCommentMeaningless(raw: string) {
 		}
 	}
 
+	// Collapsing numbers into 1 lets "+9001!" match the same as "+1"
 	const normalized = raw
 		.replaceAll(/[^a-z1\-+]+/gi, " ")
 		.toLowerCase()
-		.replaceAll(/\s*(?:please|pls|plz)\s*/g, "")
 		.trim();
 
 	if (normalized !== trimmed) {
 		for (const [reason, phrases] of Object.entries(knownMeaninglessPhrases)) {
-			if (phrases.has(normalized) || phrases.has(trimmed)) {
+			if (phrases.has(normalized)) {
+				return reason as MeaninglessReason;
+			}
+		}
+	}
+
+	// Finally, a comment is meaningless if it contains only words from a known
+	// meaningless phrase, ignoring any useless words like "a" and "please"
+	// (lowercased first, as are-docs-informative splits "HeLp" into "he lp")
+	const lowercased = trimmed.toLowerCase();
+	for (const [reason, phrases] of Object.entries(knownMeaninglessPhrases)) {
+		for (const phrase of phrases) {
+			if (
+				!areDocsInformative(lowercased, phrase, { aliases: {}, uselessWords })
+			) {
 				return reason as MeaninglessReason;
 			}
 		}

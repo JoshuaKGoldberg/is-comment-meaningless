@@ -6,10 +6,14 @@ describe(isCommentMeaningless, () => {
 	describe("meaningful", () => {
 		it.each([
 			"accepting PRs! ❤️",
+			"any idea why?",
 			"arbitrary other words",
+			"is this fixed in the release?",
 			"lgtm",
+			"me too, but also a different error",
 			"please fill out the template",
 			"what do you mean?",
+			"yes and no",
 		])("%j", (text) => {
 			expect(isCommentMeaningless(text)).toBe(false);
 		});
@@ -27,6 +31,7 @@ describe(isCommentMeaningless, () => {
 				"\t",
 				"\t\n \n \r\n ",
 				"¯\\_(ツ)_/¯",
+				"the",
 				"wat",
 				"what?",
 				"wut",
@@ -41,12 +46,14 @@ describe(isCommentMeaningless, () => {
 				"any idea",
 				"did anybody get this to work?",
 				"did anybody get this to work",
+				"Help me, please!",
 				"help me please",
 				"help me",
 				"help please",
 				"help",
 				"i m stuck",
 				"im stuck",
+				"I need the help",
 				"need help",
 				"please help",
 				"pls help",
@@ -106,9 +113,11 @@ describe(isCommentMeaningless, () => {
 				"PLUS ONE",
 				"same here",
 				"same issue",
+				"same, here",
 				"same",
 				"subscribe",
 				"subscribed",
+				"the same issue",
 				"this",
 				"us too",
 				"yes",
@@ -120,10 +129,12 @@ describe(isCommentMeaningless, () => {
 
 		describe("update", () => {
 			it.each([
+				"an update please?",
 				"anyone else",
 				"anyone",
 				"any news",
 				"any progress",
+				"any update on the bug, please?",
 				"any update on the bug",
 				"any update on this bug",
 				"any update on this",
