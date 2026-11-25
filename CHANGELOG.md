@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.3.0](https://github.com/JoshuaKGoldberg/is-comment-meaningless/compare/0.2.0...0.3.0) (2026-11-25)
+
+### Features
+
+- use are-docs-informative to more intelligently parse phrases ([#420](https://github.com/JoshuaKGoldberg/is-comment-meaningless/issues/420)) ([ff2d304](https://github.com/JoshuaKGoldberg/is-comment-meaningless/commit/ff2d30450f04691f7c3d90a767ba5a91eaaa83fe)), closes [#19](https://github.com/JoshuaKGoldberg/is-comment-meaningless/issues/19)
+
+### Bug Fixes
+
+- bump to create-typescript-app@2.87.23 ([#423](https://github.com/JoshuaKGoldberg/is-comment-meaningless/issues/423)) ([135867e](https://github.com/JoshuaKGoldberg/is-comment-meaningless/commit/135867e10faa413a1e1228bc651c9381a484b6c8)), closes [#422](https://github.com/JoshuaKGoldberg/is-comment-meaningless/issues/422)
+
 ## [0.2.0](https://github.com/JoshuaKGoldberg/is-comment-meaningless/compare/0.1.0...0.2.0) (2025-04-18)
 
 ### Features
