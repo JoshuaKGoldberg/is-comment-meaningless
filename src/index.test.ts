@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { isCommentMeaningless } from "./index.js";
+import { isCommentMeaningless } from "./index.ts";
 
 describe(isCommentMeaningless, () => {
 	describe("meaningful", () => {
